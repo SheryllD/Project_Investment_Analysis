@@ -1,12 +1,14 @@
 {
   "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "express": "^4.21.2",
     "react": "^19.0.0"
   },
   "name": "project_investment_analysis",
-  "description": "Project_Investment_Analysis",
+  "description": "Investment_Analysis",
   "version": "1.0.0",
-  "main": "feature.js",
-  "devDependencies": {},
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
