@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "react": "^19.0.0"
+  },
+  "name": "project_investment_analysis",
+  "description": "Project_Investment_Analysis",
+  "version": "1.0.0",
+  "main": "feature.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Princess D.",
+  "license": "ISC"
+}
