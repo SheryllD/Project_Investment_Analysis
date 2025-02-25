@@ -1,11 +1,8 @@
-// to run it pls use node server.js in your terminal 
-
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const cors = require("cors");
-const puppeteer = require("puppeteer");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -52,80 +49,39 @@ const sources = [
   },
 ];
 
-async function scrapeWithPuppeteer(url) {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-  const page = await browser.newPage();
-
-  await page.setUserAgent(
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-  );
-  await page.setExtraHTTPHeaders({
-    "accept-language": "en-US,en;q=0.9",
-  });
-
-  try {
-    await page.goto(url, { waitUntil: "networkidle2" });
-    const content = await page.content();
-    await browser.close();
-    return content;
-  } catch (error) {
-    console.error(`Error fetching ${url}:`, error.message);
-    await browser.close();
-    return null;
-  }
-}
-
 async function scrapeFundingData() {
   const fundingData = [];
 
   for (const source of sources) {
     try {
-      let html;
+      console.log(`Scraping ${source.name}...`);
+      const response = await axios.get(source.address, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept-Language": "en-US,en;q=0.9",
+          "Accept-Encoding": "gzip, deflate, br",
+          Connection: "keep-alive",
+        },
+      });
 
-      if (
-        [
-          "crunchbase",
-          "pitchbook",
-          "fundingRounds",
-          "startup-map-berlin",
-        ].includes(source.name)
-      ) {
-        console.log(`Scraping ${source.name} with Puppeteer...`);
-        html = await scrapeWithPuppeteer(source.address);
-      } else {
-        console.log(`Scraping ${source.name} with Axios...`);
-        const response = await axios.get(source.address, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Accept-Encoding": "gzip, deflate, br",
-            Connection: "keep-alive",
-          },
-        });
-        html = response.data;
-      }
-
-      if (!html) {
-        console.error(`Failed to retrieve data from ${source.name}`);
-        continue;
-      }
-
+      const html = response.data;
       const $ = cheerio.load(html);
 
-      $("a:contains('funding')", html).each(function () {
-        const title = $(this).text().trim();
-        let url = $(this).attr("href") || "";
-        if (url && !url.startsWith("http")) {
-          url = source.base + url;
-        }
-
+      $(".funding-round").each((i, el) => {
+        const company = $(el).find(".company-name").text().trim();
+        const amount = $(el).find(".funding-amount").text().trim();
+        const round = $(el).find(".funding-type").text().trim();
+        const investors = $(el).find(".investors").text().trim().split(",");
+        const market = $(el).find(".market").text().trim();
+        const location = $(el).find(".location").text().trim();
         fundingData.push({
-          title,
-          url,
+          company,
+          amount,
+          round,
+          investors,
+          market,
+          location,
           source: source.name,
         });
       });
