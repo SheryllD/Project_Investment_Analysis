@@ -20,3 +20,6 @@ Thumbs.db
 
 # Ignore Git-related files
 .git/
+
+# Ignore dependencies
+node_modules/
