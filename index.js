@@ -1,8 +1,9 @@
-require("dotenv").config();
 const express = require("express");
-const axios = require("axios");
-const cheerio = require("cheerio");
+const puppeteer = require("puppeteer-extra");
 const cors = require("cors");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+
+puppeteer.use(StealthPlugin());
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -14,87 +15,85 @@ const sources = [
   {
     name: "crunchbase",
     address: "https://www.crunchbase.com",
-    base: "https://www.crunchbase.com",
   },
   {
     name: "techcrunch",
     address: "https://techcrunch.com",
-    base: "https://techcrunch.com",
   },
   {
     name: "cbinsights",
     address: "https://www.cbinsights.com",
-    base: "https://www.cbinsights.com",
   },
   {
     name: "pitchbook",
     address: "https://pitchbook.com/news",
-    base: "https://pitchbook.com",
-  },
-  {
-    name: "angelList",
-    address: "https://www.angellist.com/",
-    base: "https://www.angellist.com/",
-  },
-  {
-    name: "fundingRounds",
-    address: "https://www.crunchbase.com/funding-rounds",
-    base: "https://www.crunchbase.com",
   },
   {
     name: "startup-map-berlin",
-    address:
-      "https://startup-map.berlin/transactions.rounds/f/growth_stages/not_mature/regions/anyof_Berlin%2FBrandenburg%20Metropolitan%20Region/rounds/not_GRANT_SPAC%20PRIVATE%20PLACEMENT/tags/not_outside%20tech?showStats=YEAR&statsType=rounds",
-    base: "https://startup-map.berlin",
+    address: "https://startup-map.berlin/transactions.rounds",
   },
 ];
 
 async function scrapeFundingData() {
+  const browser = await puppeteer.launch({
+    headless: true, // Set to true for production
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+
+  const page = await browser.newPage();
+
+  await page.setUserAgent(
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  );
+
   const fundingData = [];
 
   for (const source of sources) {
     try {
-      console.log(`Scraping ${source.name}...`);
-      const response = await axios.get(source.address, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          "Accept-Language": "en-US,en;q=0.9",
-          "Accept-Encoding": "gzip, deflate, br",
-          Connection: "keep-alive",
-        },
+      console.log(`🔍 Scraping ${source.name}...`);
+      await page.goto(source.address, {
+        waitUntil: "domcontentloaded",
+        timeout: 60000,
       });
 
-      const html = response.data;
-      const $ = cheerio.load(html);
+      // Corrected wait method (alternative to page.waitForTimeout)
+      await new Promise((resolve) => setTimeout(resolve, 5000));
 
-      $(".funding-round").each((i, el) => {
-        const company = $(el).find(".company-name").text().trim();
-        const amount = $(el).find(".funding-amount").text().trim();
-        const round = $(el).find(".funding-type").text().trim();
-        const investors = $(el).find(".investors").text().trim().split(",");
-        const market = $(el).find(".market").text().trim();
-        const location = $(el).find(".location").text().trim();
-        fundingData.push({
-          company,
-          amount,
-          round,
-          investors,
-          market,
-          location,
-          source: source.name,
+      // Extract page HTML to check if content is loaded
+      const html = await page.content();
+
+      // Extract funding data from the table
+      const scrapedData = await page.evaluate(() => {
+        const rows = Array.from(
+          document.querySelectorAll(".igc-table.__dynamic tbody tr")
+        );
+        return rows.map((row) => {
+          const columns = row.querySelectorAll("td");
+          return {
+            company: columns[0]?.innerText.trim() || "N/A",
+            amount: columns[1]?.innerText.trim() || "N/A",
+            leadInvestors: columns[2]?.innerText.trim() || "N/A",
+            valuation: columns[3]?.innerText.trim() || "N/A",
+            industry: columns[4]?.innerText.trim() || "N/A",
+            dateReported: columns[5]?.innerText.trim() || "N/A",
+          };
         });
       });
+
+      fundingData.push(...scrapedData);
     } catch (error) {
-      console.log(`Error scraping ${source.name}:`, error.message);
+      console.log(`Error with scraping ${source.name}: ${error.message}`);
     }
   }
+
+  await browser.close();
   return fundingData;
 }
 
 app.get("/funding", async (req, res) => {
+  console.log("📡 API Request: /funding");
   const data = await scrapeFundingData();
   res.json(data);
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
