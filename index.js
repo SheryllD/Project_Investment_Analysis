@@ -50,19 +50,19 @@ async function scrapeFundingData() {
 
   for (const source of sources) {
     try {
-      console.log(`🔍 Scraping ${source.name}...`);
+      console.log(`Scraping ${source.name}...`);
       await page.goto(source.address, {
         waitUntil: "domcontentloaded",
         timeout: 60000,
       });
 
-      // Corrected wait method (alternative to page.waitForTimeout)
+      // Corrected wait method, if it doesnt work (alternative to page.waitForTimeout)
       await new Promise((resolve) => setTimeout(resolve, 5000));
 
-      // Extract page HTML to check if content is loaded
+      // Extracting page HTML to check if content is loaded.
       const html = await page.content();
 
-      // Extract funding data from the table
+      // Extracting funding data from the table
       const scrapedData = await page.evaluate(() => {
         const rows = Array.from(
           document.querySelectorAll(".igc-table.__dynamic tbody tr")
@@ -91,7 +91,7 @@ async function scrapeFundingData() {
 }
 
 app.get("/funding", async (req, res) => {
-  console.log("📡 API Request: /funding");
+  console.log("API Request: /funding");
   const data = await scrapeFundingData();
   res.json(data);
 });
