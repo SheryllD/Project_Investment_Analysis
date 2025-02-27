@@ -35,6 +35,7 @@ To run the web scraper locally:
 ### API Endpoints
 Base URL: http://localhost:8000
 <br /> 
+</br>
 
 #### 1. Get Welcome Message: 
 GET /
@@ -43,6 +44,7 @@ GET /
 Response:
 "Welcome to the Investor & Funding Web Scraper API!"
 </br> 
+</br>
 
 #### 2. Get All Scraped Funding Articles: 
 GET /funding
