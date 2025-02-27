@@ -1,16 +1,15 @@
 # Project: Startup Investments & Fundings 
 
 Created by: 
-Michele  
-
-Sheryll Dumapal  
+- Michele  
+- Sheryll Dumapal  
 
 Date: 27-02-2025
 
-Branches:  
-- Branch: Main/Master 
-- Branch: cleaning
-- Branch: feature (Webscraper)
+Branches created:  
+- Branch: Main/Master (Data Analysis)
+- Branch: cleaning (for cleaning the data)
+- Branch: feature (for creating the webscraper)
 <br/>
 
 ## Business Case
