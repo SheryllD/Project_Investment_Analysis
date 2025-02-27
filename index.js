@@ -12,8 +12,25 @@ const fundingSources = [
     base: "https://techfundingnews.com",
   },
   {
-    name: "Funding News",
-    address: "https://techfundingnews.com/category/funding/",
+    name: "Venture Capital Journal",
+    address:
+      "https://www.venturecapitaljournal.com/news-and-analysis/firms-funds/",
+    base: "https://www.venturecapitaljournal.com",
+  },
+  {
+    name: "vcnewsdaily",
+    address: "https://vcnewsdaily.com/",
+    base: "https://vcnewsdaily.com/",
+  },
+  {
+    name: "cnbc",
+    address: "https://www.cnbc.com/venture-capital/",
+    base: "https://techfundingnews.com",
+  },
+  {
+    name: "Google News",
+    address:
+      "https://www.google.com/search?q=startups+funding&sca_esv=6acdd3b722376336&biw=1210&bih=925&tbm=nws&sxsrf=AHTn8zobDYNN6g_2AcpMkYRJpKpTvnemXg%3A1740685152242&ei=YL_AZ4e8Dp6I9u8PzfykiQo&ved=0ahUKEwiH7KjBzeSLAxUehP0HHU0-KaEQ4dUDCA4&uact=5&oq=startups+funding&gs_lp=Egxnd3Mtd2l6LW5ld3MiEHN0YXJ0dXBzIGZ1bmRpbmcyBxAAGIAEGAoyBxAAGIAEGAoyBxAAGIAEGAoyBxAAGIAEGAoyBxAAGIAEGAoyBRAAGIAEMgcQABiABBgKMgcQABiABBgKMgcQABiABBgKMgcQABiABBgKSJEVUABYpRJwAXgAkAEAmAHMAqABgRaqAQczLjkuMS4zuAEDyAEA-AEBmAIQoALMFqgCAMICCxAAGIAEGJECGIoFwgIKEAAYgAQYQxiKBcICCxAAGIAEGIYDGIoFmAMBkgcIMi4xMC4xLjOgB8lg&sclient=gws-wiz-news",
     base: "https://techfundingnews.com",
   },
 ];
@@ -24,7 +41,10 @@ const keywords = [
   "investment",
   "funding rounds",
   "technology",
+  "Startup investments",
+  "Private equity insights",
   "AI",
+  "funded_organization",
 ];
 let articles = []; // Storing the scraped articles
 
