@@ -5,6 +5,7 @@ Created by:
 - Sheryll Dumapal  
 
 Date: 27-02-2025
+<br/>
 
 Branches created:  
 - Branch: Main/Master (Data Analysis)
@@ -28,11 +29,12 @@ Branches created:
 <br/>
 
 #### 1. Data Cleaning 
-- Sources of data:
+Sources of data:  
+https://www.kaggle.com/datasets/adilshamim8/startup-growth-and-investment-data  
 
-- Data formats: 
+Data formats:   
+- CSV   
 
-- Preprocessing done at the collection stage: 
 <br/>
 
 #### 2. Data Cleaning & Preprocessing 
