@@ -3,7 +3,6 @@
 Created by: Sheryll Dumapal    
 
 Date: 27-02-2025      
-
 <br />
 
 ## About the webscraper 
