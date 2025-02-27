@@ -1,15 +1,33 @@
 # Project: Startup Investments & Fundings 
 
-Branches: 
+Created by: 
+Michele  
+
+Sheryll Dumapal  
+
+Date: 27-02-2025
+
+Branches:  
+- Branch: Main/Master 
+- Branch: cleaning
+- Branch: feature (Webscraper)
+<br/>
 
 ## Business Case
 - explanation here 
 
-### Problems: 
+## Problems: 
 
-### Hypothesis: 
+<br/>
 
-### Mythodology: 
+## Hypothesis: 
+
+<br/>
+
+## Mythodology: 
+
+<br/>
+
 #### 1. Data Cleaning 
 - Sources of data:
 
@@ -23,51 +41,65 @@ Branches:
 - Standardizing formats (e.g., date formats, text case normalization)
 - Handling outliers
 - Addressing categorical variables 
+<br/>
 
 #### 3. Exploratory Data Analysis (EDA)
 - Summary statistics (mean, median, mode, standard deviation)
 - Data visualization (histograms, boxplots, correlation heatmaps)
 - Identifying patterns, trends, and anomalies
 - Feature selection and engineering
+<br/>
 
 #### 4. Data Processing & Transformation
 - Merging or aggregating data from multiple sources
 - Creating new features (please see "Features" for more information)
+<br/>
 
 #### 5. Analytical Approach & Techniques
 - Statistical methods applied 
 - Clustering and classification
 - Performance metrics used: (more information here needed) 
 - Assumptions or limitations considered
+<br/>
 
 #### 7. Conclusion & Insights
 Summary of findings: 
 
-- several key statistcs findings:
-- segmentation of amount invested by countries: Australia
-- segmentation of amount invested by industry: Heatlh Tech
-- Average growth rate:  EdTech
-- industry highest valuation: E-commerce
-- country highest valuation: Australia
-- Fairly even distribtion of invesment amoung  all countries and industries
+- several key statistcs findings:  
 
-Key takeaways relevant to the problem statements: 
+- segmentation of amount invested by countries: Australia  
+
+- segmentation of amount invested by industry: Heatlh Tech  
+
+- Average growth rate:  EdTech  
+
+- industry highest valuation: E-commerce  
+
+- country highest valuation: Australia  
+
+- Fairly even distribtion of invesment amoung  all countries and industries  
+
+
+#### Key takeaways relevant to the problem statements: 
 
 - show that Australia is the countries which invested more 
 - Industry with highest growth and growth potential: Australia
 - show the industry with more invesment and least growth: Health Tech 
+<br/>
 
-Potential business implications or next steps:
+#### Potential business implications or next steps:
 
 - As invesment advisors we direct private investor into the most profitable oportunities in private equity
 - in this case EdTech shows a good potential and Health tech shows the slowest growth thats a sign of a overheated and overfunded industry. 
 - Showwing which countries harvest the greatest oportunity to do business in our data Australia is at the top
+<br/>
 
 #### Functions: 
 
 - data cleaning functions: Regex, Args, Loops, index, DF
 - data aggreagation functions: for loops, index, Args, Sum, Average
 - Visualitations functions: Args, Import matplot.pyplot, plt figure, plt pie, plt tittle, plt show
+<br/>
 
 ### Technical Issues & Problems 
 
@@ -80,8 +112,7 @@ Potential business implications or next steps:
 # Feature: Webscraper 
 
 Created by: Sheryll Dumapal    
-
-Date: 27-02-2025      
+ 
 <br />
 
 ## About the webscraper 
