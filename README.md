@@ -8,6 +8,7 @@ Date: 27-02-2025
 ## About the webscraper 
 This web scraper extracts investment and funding-related articles from multiple sources using Node.js, Express, Axios, and Cheerio.
 <br />
+</br>
 
 ### Prerequisites  
 Before running the scraper locally, ensure you have:
@@ -31,15 +32,17 @@ To run the web scraper locally:
 - npm start
 <br />
 
-## API Endpoints
+### API Endpoints
 Base URL: http://localhost:8000
 <br /> 
 
 #### 1. Get Welcome Message: 
 GET /
+</br>
 
 Response:
 "Welcome to the Investor & Funding Web Scraper API!"
+</br> 
 
 #### 2. Get All Scraped Funding Articles: 
 GET /funding
@@ -56,6 +59,7 @@ Response Example:
   }
 ]
 ```
+</br> 
 
 #### 3. Get Articles from a Specific Funding Source
 GET /funding/:fundingID
@@ -66,6 +70,8 @@ GET /funding/vcnewsdaily?keyword=AI
 
 - fundingID: Name of the funding source (e.g., techfundingnews, vcnewsdaily)
 - Optional Query Parameter (?keyword=): Filter by a keyword
+
+</br>
 
 Response Example: 
 ```json
@@ -96,20 +102,20 @@ Supports static and dynamic webpages (with limitations on Cloudflare-protected s
 
 ### 2. Keyword-Based Filtering
 Extracts only relevant articles by matching predefined investment-related keywords such as:
-"startup"  
-"investment"  
-"funding rounds"  
-"AI"  
-"private equity insights"   
-This ensures that only the most relevant funding news is captured.
+- "startup"  
+- "investment"  
+- "funding rounds"  
+- "AI"  
+- "private equity insights"   
+- This ensures that only the most relevant funding news is captured.
 </br>
 
 ### 3. REST API for Accessing Scraped Data
 Provides structured JSON responses via an API.  
 
 Endpoints available:  
-GET /funding → Fetch all scraped funding articles.  
-GET /funding/:fundingID → Retrieve articles from a specific funding source.  
+- GET /funding → Fetch all scraped funding articles.  
+- GET /funding/:fundingID → Retrieve articles from a specific funding source.  
 Optional query parameters allow filtering by keywords.  
 </br> 
 
@@ -120,16 +126,19 @@ Ensures the data remains up-to-date without manual intervention.
 
 ### 5. Handles URL Formatting & Missing Links
 Automatically fixes incomplete or relative URLs, ensuring all links are accessible.  
+
 Prevents broken links by appending missing base URLs from each funding source.  
 </br> 
 
 ### 6. Error Handling & Logging
 Catches and logs errors if a website fails to load or blocks scraping attempts.  
+
 Prevents API failures by gracefully skipping problematic sources.  
 </br> 
 
 ### 7. Lightweight & Fast
 Uses Axios and Cheerio for fast, efficient HTML parsing.  
+
 Avoids excessive load on websites by making minimal requests.  
 </br>
 
@@ -139,15 +148,20 @@ Avoids excessive load on websites by making minimal requests.
 
 #### 1. Missing express module error
 
-If you get an error like:
+If you get an error like:  
+
 Error: Cannot find module 'express'
+- install express
+</br>
 
 #### 2. axios or cheerio missing
 run in terminal:  npm install axios cheerio
+</br>
 
 #### 3. Permission Issues with ChromeDriver
 If using ChromeDriver for headless browsing, ensure you have installed the correct version:
 Download ChromeDriver: https://developer.chrome.com/docs/chromedriver/downloads
+</br>
 
 ## Technical Issues, Problems: 
 Most venture capital websites are difficult to scrape due to Cloudflare protection or dynamic content rendering. Initially, I attempted to bypass these restrictions by modifying the user agent to mimic human behavior. However, this approach was unsuccessful, and my requests were blocked.
