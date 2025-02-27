@@ -18,6 +18,9 @@ Branches created:
 
 ## Problems: 
 
+1. Investors, Big Fundings & Banks often struggle to identify which industries are growing the fastest, making it hard to target areas with rapid market expansion. <br/>
+
+2. Without clear comparisons, it is difficult for investors to determine which industries offer the highest profit margins. 
 <br/>
 
 ## Hypothesis: 
