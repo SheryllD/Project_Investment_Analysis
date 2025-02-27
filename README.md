@@ -77,7 +77,7 @@ Data formats:
 - Assumptions or limitations considered
 <br/>
 
-## Functions: 
+## Functions
 
 - data cleaning functions: Regex, Args, Loops, index, DF
 - data aggreagation functions: for loops, index, Args, Sum, Average
@@ -100,14 +100,14 @@ Summary of findings:
 - Fairly even distribtion of invesment amoung  all countries and industries  
 <br/>
 
-## Key takeaways relevant to the problem statements: 
+## Key takeaways relevant to the problem statements
 
 - show that Australia is the countries which invested more 
 - Industry with highest growth and growth potential: Australia
 - show the industry with more invesment and least growth: Health Tech 
 <br/>
 
-## Potential business implications or next steps:
+## Potential business implications or next steps
 
 - As invesment advisors we direct private investor into the most profitable oportunities in private equity
 - in this case EdTech shows a good potential and Health tech shows the slowest growth thats a sign of a overheated and overfunded industry. 
@@ -232,7 +232,7 @@ Extracts only relevant articles by matching predefined investment-related keywor
 - "funding rounds"  
 - "AI"  
 - "private equity insights"   
-- This ensures that only the most relevant funding news is captured.
+This ensures that only the most relevant funding news is captured.
 </br>
 
 ### 3. REST API for Accessing Scraped Data
