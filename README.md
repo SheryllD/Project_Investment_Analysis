@@ -62,7 +62,7 @@ Branches created:
 - Assumptions or limitations considered
 <br/>
 
-### 6. Conclusion & Insights
+## Conclusion & Insights
 Summary of findings: 
 
 - segmentation of amount invested by countries: Australia  
@@ -78,28 +78,28 @@ Summary of findings:
 - Fairly even distribtion of invesment amoung  all countries and industries  
 <br/>
 
-#### Key takeaways relevant to the problem statements: 
+## Key takeaways relevant to the problem statements: 
 
 - show that Australia is the countries which invested more 
 - Industry with highest growth and growth potential: Australia
 - show the industry with more invesment and least growth: Health Tech 
 <br/>
 
-#### Potential business implications or next steps:
+## Potential business implications or next steps:
 
 - As invesment advisors we direct private investor into the most profitable oportunities in private equity
 - in this case EdTech shows a good potential and Health tech shows the slowest growth thats a sign of a overheated and overfunded industry. 
 - Showwing which countries harvest the greatest oportunity to do business in our data Australia is at the top
 <br/>
 
-#### Functions: 
+## Functions: 
 
 - data cleaning functions: Regex, Args, Loops, index, DF
 - data aggreagation functions: for loops, index, Args, Sum, Average
 - Visualitations functions: Args, Import matplot.pyplot, plt figure, plt pie, plt tittle, plt show
 <br/>
 
-### Technical Issues & Problems 
+## Technical Issues & Problems 
 
 - we tried to use a format for the money amounts having it show a M or B (millions and billions) for a better user experience but it didnt work for getting statistics as we needed am integer and not a string 
 - we change the startups generic names into an Id numbers for better searchability
