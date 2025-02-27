@@ -21,12 +21,16 @@ Branches created:
 <br/>
 
 ## Hypothesis: 
+
 1. Technology sectors such as AI, e-commerce, and renewable energy will outpace traditional industries in growth, driven by continuous innovation and continuous market demand.
 <br/>
+
 2. Due to scalable business models and digital efficiencies, emerging technology sectors are expected to deliver higher profit margins than conventional industries.
 <br/>
+
 3. Countries with strong innovation ecosystems and favorable regulations, particularly the United States, will attract the largest volumes of investor capital, further boosting emerging tech sectors.
 <br/>
+
 4. The United States is the leading country in startup investments and funding for emerging ventures.
 <br/>
 
