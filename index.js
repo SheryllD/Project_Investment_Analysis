@@ -1,99 +1,105 @@
+const PORT = process.env.PORT || 8000;
 const express = require("express");
-const puppeteer = require("puppeteer-extra");
-const cors = require("cors");
-const StealthPlugin = require("puppeteer-extra-plugin-stealth");
-
-puppeteer.use(StealthPlugin());
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 const app = express();
-const PORT = process.env.PORT || 8000;
 
-app.use(cors());
-app.use(express.json());
-
-const sources = [
+const fundingSources = [
   {
-    name: "crunchbase",
-    address: "https://www.crunchbase.com",
+    name: "Funding News",
+    address: "https://techfundingnews.com/category/funding/",
+    base: "https://techfundingnews.com",
   },
   {
-    name: "techcrunch",
-    address: "https://techcrunch.com",
-  },
-  {
-    name: "cbinsights",
-    address: "https://www.cbinsights.com",
-  },
-  {
-    name: "pitchbook",
-    address: "https://pitchbook.com/news",
-  },
-  {
-    name: "startup-map-berlin",
-    address: "https://startup-map.berlin/transactions.rounds",
+    name: "Funding News",
+    address: "https://techfundingnews.com/category/funding/",
+    base: "https://techfundingnews.com",
   },
 ];
 
-async function scrapeFundingData() {
-  const browser = await puppeteer.launch({
-    headless: true, // Set to true for production
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+const keywords = [
+  "climate",
+  "startup",
+  "investment",
+  "funding rounds",
+  "technology",
+  "AI",
+];
+let articles = []; // Storing the scraped articles
 
-  const page = await browser.newPage();
+// Function to scrape articles from all funding sources
+const scrapeArticles = async () => {
+  articles = []; // Resetting articles before scraping
 
-  await page.setUserAgent(
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-  );
-
-  const fundingData = [];
-
-  for (const source of sources) {
+  for (const source of fundingSources) {
     try {
-      console.log(`Scraping ${source.name}...`);
-      await page.goto(source.address, {
-        waitUntil: "domcontentloaded",
-        timeout: 60000,
-      });
+      const response = await axios.get(source.address);
+      const html = response.data;
+      const $ = cheerio.load(html);
 
-      // Corrected wait method, if it doesnt work (alternative to page.waitForTimeout)
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      keywords.forEach((keyword) => {
+        $(`a:contains("${keyword}")`, html).each(function () {
+          const title = $(this).text().trim();
+          let url = $(this).attr("href") || "";
 
-      // Extracting page HTML to check if content is loaded.
-      const html = await page.content();
+          if (url && !url.startsWith("http")) {
+            url = source.base + url;
+          }
 
-      // Extracting funding data from the table
-      const scrapedData = await page.evaluate(() => {
-        const rows = Array.from(
-          document.querySelectorAll(".igc-table.__dynamic tbody tr")
-        );
-        return rows.map((row) => {
-          const columns = row.querySelectorAll("td");
-          return {
-            company: columns[0]?.innerText.trim() || "N/A",
-            amount: columns[1]?.innerText.trim() || "N/A",
-            leadInvestors: columns[2]?.innerText.trim() || "N/A",
-            valuation: columns[3]?.innerText.trim() || "N/A",
-            industry: columns[4]?.innerText.trim() || "N/A",
-            dateReported: columns[5]?.innerText.trim() || "N/A",
-          };
+          articles.push({
+            title,
+            url,
+            source: source.name,
+            keyword, // Tracking the keyword match
+          });
         });
       });
-
-      fundingData.push(...scrapedData);
     } catch (error) {
-      console.log(`Error with scraping ${source.name}: ${error.message}`);
+      console.error(`Error scraping ${source.name}:`, error.message);
     }
   }
+};
 
-  await browser.close();
-  return fundingData;
-}
+// Initial scraping on startups
+scrapeArticles();
 
-app.get("/funding", async (req, res) => {
-  console.log("API Request: /funding");
-  const data = await scrapeFundingData();
-  res.json(data);
+// Scheduling the scraping every 30 minutes
+setInterval(scrapeArticles, 30 * 60 * 1000);
+
+// Homepage Route
+app.get("/", (req, res) => {
+  res.json("Welcome to the Investor & Funding Web Scraper API!");
 });
 
+// Route to get all scraped funding articles
+app.get("/funding", (req, res) => {
+  res.json(articles);
+});
+
+// Route to get articles for specific funding source, with optional keyword filtering
+app.get("/funding/:fundingID", (req, res) => {
+  const fundingID = req.params.fundingID.toLowerCase();
+  const keywordQuery = req.query.keyword?.toLowerCase();
+
+  const source = fundingSources.find((s) => s.name.toLowerCase() === fundingID);
+
+  if (!source) {
+    return res.status(404).json({ error: "Funding source not found!" });
+  }
+
+  const filteredArticles = articles.filter(
+    (article) =>
+      article.source.toLowerCase() === fundingID &&
+      (!keywordQuery || article.keyword.toLowerCase() === keywordQuery)
+  );
+
+  res.json(
+    filteredArticles.length > 0
+      ? filteredArticles
+      : { message: "No articles found for this source." }
+  );
+});
+
+// Starting the server
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
