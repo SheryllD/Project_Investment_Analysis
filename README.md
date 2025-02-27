@@ -62,6 +62,13 @@ Branches created:
 - Assumptions or limitations considered
 <br/>
 
+## Functions: 
+
+- data cleaning functions: Regex, Args, Loops, index, DF
+- data aggreagation functions: for loops, index, Args, Sum, Average
+- Visualitations functions: Args, Import matplot.pyplot, plt figure, plt pie, plt tittle, plt show
+<br/>
+
 ## Conclusion & Insights
 Summary of findings: 
 
@@ -90,13 +97,6 @@ Summary of findings:
 - As invesment advisors we direct private investor into the most profitable oportunities in private equity
 - in this case EdTech shows a good potential and Health tech shows the slowest growth thats a sign of a overheated and overfunded industry. 
 - Showwing which countries harvest the greatest oportunity to do business in our data Australia is at the top
-<br/>
-
-## Functions: 
-
-- data cleaning functions: Regex, Args, Loops, index, DF
-- data aggreagation functions: for loops, index, Args, Sum, Average
-- Visualitations functions: Args, Import matplot.pyplot, plt figure, plt pie, plt tittle, plt show
 <br/>
 
 ## Technical Issues & Problems 
