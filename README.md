@@ -1,13 +1,16 @@
 # Feature: Webscraper 
+<br />
 
 ## About the webscraper 
 This web scraper extracts investment and funding-related articles from multiple sources using Node.js, Express, Axios, and Cheerio.
+<br />
 
 ### Prerequisites
 Before running the scraper locally, ensure you have:
 
 - Node.js installed
 - Nodemon and Express installed
+<br />
 
 ### Installation
 If you haven't installed the necessary dependencies, run:
@@ -15,8 +18,8 @@ If you haven't installed the necessary dependencies, run:
 - npm install express axios cheerio
 
 To install nodemon globally for easier development:
-npm install -g nodemon
-
+- npm install -g nodemon
+<br />
 ### Usage
 Starting the Application
 To run the web scraper locally:
