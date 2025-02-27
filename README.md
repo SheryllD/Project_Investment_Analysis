@@ -122,26 +122,25 @@ Optional query parameters allow filtering by keywords.
 </br> 
 
 ### 4. Automatic Refresh (Scheduled Scraping)
-The scraper automatically refreshes every 30 minutes using setInterval().  
-Ensures the data remains up-to-date without manual intervention.  
+- The scraper automatically refreshes every 30 minutes using setInterval().  
+- Ensures the data remains up-to-date without manual intervention.  
 </br> 
 
 ### 5. Handles URL Formatting & Missing Links
-Automatically fixes incomplete or relative URLs, ensuring all links are accessible.  
-
-Prevents broken links by appending missing base URLs from each funding source.  
+- Automatically fixes incomplete or relative URLs, ensuring all links are accessible.  
+- Prevents broken links by appending missing base URLs from each funding source.  
 </br> 
 
 ### 6. Error Handling & Logging
-Catches and logs errors if a website fails to load or blocks scraping attempts.  
-
-Prevents API failures by gracefully skipping problematic sources.  
+- Catches and logs errors if a website fails to load or blocks scraping attempts.  
+ 
+- Prevents API failures by gracefully skipping problematic sources.  
 </br> 
 
 ### 7. Lightweight & Fast
-Uses Axios and Cheerio for fast, efficient HTML parsing.  
+- Uses Axios and Cheerio for fast, efficient HTML parsing.  
 
-Avoids excessive load on websites by making minimal requests.  
+- Avoids excessive load on websites by making minimal requests.  
 </br>
 
 # Technical Issues, Problems & Troubleshooting
