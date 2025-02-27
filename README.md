@@ -9,7 +9,7 @@ Date: 27-02-2025
 This web scraper extracts investment and funding-related articles from multiple sources using Node.js, Express, Axios, and Cheerio.
 <br />
 
-### Prerequisites
+### Prerequisites  
 Before running the scraper locally, ensure you have:
 
 - Node.js installed
