@@ -24,13 +24,16 @@ If you haven't installed the necessary dependencies, run:
 To install nodemon globally for easier development:
 - npm install -g nodemon
 <br />
+
 ### Usage
 Starting the Application
 To run the web scraper locally:
 - npm start
+<br />
 
 ## API Endpoints
 Base URL: http://localhost:8000
+<br /> 
 
 #### 1. Get Welcome Message: 
 GET /
@@ -40,8 +43,10 @@ Response:
 
 #### 2. Get All Scraped Funding Articles: 
 GET /funding
+<br/>
 
-Response Example: 
+Response Example:
+```json
 [
   {
     "title": "Startup X Raises $10M in Series A",
@@ -50,6 +55,7 @@ Response Example:
     "keyword": "funding rounds"
   }
 ]
+```
 
 #### 3. Get Articles from a Specific Funding Source
 GET /funding/:fundingID
@@ -62,6 +68,7 @@ GET /funding/vcnewsdaily?keyword=AI
 - Optional Query Parameter (?keyword=): Filter by a keyword
 
 Response Example: 
+```json
 [
   {
     "title": "AI Startup Y Raises $15M",
@@ -70,6 +77,7 @@ Response Example:
     "keyword": "AI"
   }
 ]
+```
 <br/>
 
 # Tech Stack 
@@ -80,7 +88,6 @@ Response Example:
 - Nodemon (for development)
 
 # Features 
-
 
 npm run start
 
