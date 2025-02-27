@@ -45,7 +45,7 @@ const keywords = [
   "Private equity insights",
   "AI",
   "funded_organization",
-];
+]; 
 let articles = []; // Storing the scraped articles
 
 // Function to scrape articles from all funding sources
