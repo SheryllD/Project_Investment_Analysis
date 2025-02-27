@@ -33,6 +33,7 @@ Branches created:
 - Data formats: 
 
 - Preprocessing done at the collection stage: 
+<br/>
 
 #### 2. Data Cleaning & Preprocessing 
 - Handling missing values 
@@ -77,7 +78,7 @@ Summary of findings:
 - country highest valuation: Australia  
 
 - Fairly even distribtion of invesment amoung  all countries and industries  
-
+<br/>
 
 #### Key takeaways relevant to the problem statements: 
 
