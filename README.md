@@ -62,10 +62,8 @@ Branches created:
 - Assumptions or limitations considered
 <br/>
 
-#### 7. Conclusion & Insights
+### 6. Conclusion & Insights
 Summary of findings: 
-
-- several key statistcs findings:  
 
 - segmentation of amount invested by countries: Australia  
 
