@@ -277,8 +277,6 @@ Optional query parameters allow filtering by keywords.
 - Avoids excessive load on websites by making minimal requests.  
 </br>
 
----
-
 # Technical Issues, Problems & Troubleshooting
 
 ## Trouble Shooting
@@ -294,10 +292,12 @@ Error: Cannot find module 'express'
 #### 2. axios or cheerio missing
 run in terminal:  npm install axios cheerio
 </br>
+</br> 
 
 #### 3. Permission Issues with ChromeDriver
 If using ChromeDriver for headless browsing, ensure you have installed the correct version:
 Download ChromeDriver: https://developer.chrome.com/docs/chromedriver/downloads
+</br>
 </br>
 
 ## Technical Issues, Problems: 
