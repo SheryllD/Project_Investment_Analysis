@@ -128,8 +128,6 @@ Summary of Findings
 <br/>
 <br/>
 <br/> 
-<br/>
-<br/> 
 
 ---
 
