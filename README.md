@@ -49,7 +49,7 @@ Understanding startup investments and funding trends to identify high-growth ind
 - Segmented industries based on investment and growth.  
 
 ### **3. Data Visualisation**  
-- Created **bar charts, pie charts, and segmentation visualisations** to illustrate investment trends and growth patterns.  
+- Created bar charts, pie charts, and segmentation visualisations to illustrate investment trends and growth patterns.  
 
 ---
 
@@ -80,6 +80,7 @@ Understanding startup investments and funding trends to identify high-growth ind
 - Startup names converted to unique **IDs** for easier indexing.  
 
 <br/>
+---
 
 ## Functions
 
@@ -87,6 +88,7 @@ Understanding startup investments and funding trends to identify high-growth ind
 - data aggreagation functions: for loops, index, Args, Sum, Average
 - Visualitations functions: Args, Import matplot.pyplot, plt figure, plt pie, plt tittle, plt show
 <br/>
+---
 
 ## Conclusion & Insights
 Summary of Findings
@@ -97,6 +99,7 @@ Summary of Findings
 - Country with highest valuation: Australia leads in startup valuations, reinforcing its position as a key player in global startup investments.
 - Investment distribution: Investments are fairly evenly spread across industries and countries, indicating a diversified funding landscape rather than a strong concentration in specific sectors.
 <br/>
+---
 
 ## Key takeaways relevant to the problem statements
 
@@ -105,12 +108,15 @@ Summary of Findings
 - show the industry with more invesment and least growth: Health Tech 
 <br/>
 
+---
+
 ## Next steps
 
 - As invesment advisors we direct private investor into the most profitable oportunities in private equity
 - in this case EdTech shows a good potential and Health tech shows the slowest growth thats a sign of a overheated and overfunded industry. 
 - Showwing which countries harvest the greatest oportunity to do business in our data Australia is at the top
 <br/>
+---
 
 ## Technical Issues & Problems 
 
@@ -119,6 +125,9 @@ Summary of Findings
 <br/>
 <br/>
 <br/> 
+<br/>
+<br/> 
+---
 
 # Feature: Webscraper 
 
@@ -129,7 +138,8 @@ Created by: Sheryll Dumapal
 ## About the webscraper 
 This web scraper extracts investment and funding-related articles from multiple sources using Node.js, Express, Axios, and Cheerio.
 <br />
-</br>
+<br />
+
 
 ### Prerequisites  
 Before running the scraper locally, ensure you have:
@@ -209,12 +219,16 @@ Response Example:
 ```
 <br/>
 
+---
+
 # Tech Stack 
 - JavaScript (Node.js)
 - Express.js (for API handling)
 - Axios (for HTTP requests)
 - Cheerio (for web scraping)
 - Nodemon (for development)
+
+---
 
 # Features 
 
@@ -263,6 +277,7 @@ Optional query parameters allow filtering by keywords.
 
 - Avoids excessive load on websites by making minimal requests.  
 </br>
+---
 
 # Technical Issues, Problems & Troubleshooting
 
