@@ -142,7 +142,6 @@ This web scraper extracts investment and funding-related articles from multiple 
 <br />
 <br />
 
-
 ### Prerequisites  
 Before running the scraper locally, ensure you have:
 
@@ -221,7 +220,6 @@ Response Example:
 ```
 <br/>
 
----
 
 # Tech Stack 
 - JavaScript (Node.js)
@@ -229,8 +227,7 @@ Response Example:
 - Axios (for HTTP requests)
 - Cheerio (for web scraping)
 - Nodemon (for development)
-
----
+</br>
 
 # Features 
 
@@ -279,6 +276,7 @@ Optional query parameters allow filtering by keywords.
 
 - Avoids excessive load on websites by making minimal requests.  
 </br>
+
 ---
 
 # Technical Issues, Problems & Troubleshooting
