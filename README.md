@@ -78,8 +78,8 @@ Understanding startup investments and funding trends to identify high-growth ind
 ## **Technical Challenges**  
 - Difficulty formatting currency values (M/B notation) while maintaining numerical operations.  
 - Startup names converted to unique **IDs** for easier indexing.  
-
 <br/>
+
 ---
 
 ## Functions
@@ -88,6 +88,7 @@ Understanding startup investments and funding trends to identify high-growth ind
 - data aggreagation functions: for loops, index, Args, Sum, Average
 - Visualitations functions: Args, Import matplot.pyplot, plt figure, plt pie, plt tittle, plt show
 <br/>
+
 ---
 
 ## Conclusion & Insights
@@ -99,6 +100,7 @@ Summary of Findings
 - Country with highest valuation: Australia leads in startup valuations, reinforcing its position as a key player in global startup investments.
 - Investment distribution: Investments are fairly evenly spread across industries and countries, indicating a diversified funding landscape rather than a strong concentration in specific sectors.
 <br/>
+
 ---
 
 ## Key takeaways relevant to the problem statements
@@ -116,6 +118,7 @@ Summary of Findings
 - in this case EdTech shows a good potential and Health tech shows the slowest growth thats a sign of a overheated and overfunded industry. 
 - Showwing which countries harvest the greatest oportunity to do business in our data Australia is at the top
 <br/>
+
 ---
 
 ## Technical Issues & Problems 
@@ -127,6 +130,7 @@ Summary of Findings
 <br/> 
 <br/>
 <br/> 
+
 ---
 
 # Feature: Webscraper 
