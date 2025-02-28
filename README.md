@@ -304,3 +304,6 @@ Download ChromeDriver: https://developer.chrome.com/docs/chromedriver/downloads
 Most venture capital websites are difficult to scrape due to Cloudflare protection or dynamic content rendering. Initially, I attempted to bypass these restrictions by modifying the user agent to mimic human behavior. However, this approach was unsuccessful, and my requests were blocked.
 
 Next, I tried using Selenium to handle dynamic pages, but this also failed to extract the required data effectively due to the complexity of the website’s structure and anti-bot mechanisms.
+
+## Deliverables: 
+- Trello: https://trello.com/b/NnYMOZIO/moscow
