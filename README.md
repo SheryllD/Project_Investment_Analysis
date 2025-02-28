@@ -41,40 +41,110 @@ Branches created:
 
 <br/>
 
-#### 1. Data Cleaning 
-Sources of data:  
-https://www.kaggle.com/datasets/adilshamim8/startup-growth-and-investment-data  
-
-Data formats:   
-- CSV   
+#### 1. Loading & Data Cleaning 
+1. We began by reviewing and cleaning the dataset to understand its structure and key patterns.  
+2. We imported the necessary libraries for data cleaning and analysis.  
+3. We loaded the CSV dataset and used `df.shape` to examine the number of rows and columns.  
+4. We checked for duplicate rows using `df.duplicated().sum()`.  
+5. We generated summary statistics with `df.describe()` and `df.describe(include="all")` to gain insights into numerical and categorical data.  
+6. We reviewed the dataset’s structure, data types, and non-null counts using `df.info()`.  
 
 <br/>
 
-#### 2. Data Cleaning & Preprocessing 
-- Handling missing values 
-- Removing duplicates and inconsistencies
-- Standardizing formats (e.g., date formats, text case normalization)
-- Handling outliers
-- Addressing categorical variables 
+#### 2. Preprocessing 
 <br/>
 
-#### 3. Exploratory Data Analysis (EDA)
-- Summary statistics (mean, median, mode, standard deviation)
-- Data visualization (histograms, boxplots, correlation heatmaps)
-- Identifying patterns, trends, and anomalies
-- Feature selection and engineering
+ ##### Handling missing values 
+7. We identified missing values in each column using `df.isnull().sum()`.  
+8. If missing values were present, we decided on an appropriate handling method based on the data type and context.  
+9. If missing values were minimal, we opted to drop them using `df.dropna(inplace=True)`.  
+10. If missing values were significant, we filled them:  
+   - **For numerical data**: We used `df.fillna(df.mean())` to replace missing values with the column mean.  
+   - **For categorical data**: We replaced missing values with `"Unknown"` using `df.fillna("Unknown")`.  
+11. For time-series data, we used `df.interpolate()` to estimate missing values based on existing trends.  
 <br/>
 
-#### 4. Data Processing & Transformation
-- Merging or aggregating data from multiple sources
-- Creating new features (please see "Features" for more information)
+ ##### Removing duplicates and inconsistencies
+12. We identified duplicate rows using `df.duplicated().sum()`.  
+13. If duplicates were found, we removed them using `df.drop_duplicates(inplace=True)`.  
 <br/>
 
-#### 5. Analytical Approach & Techniques
-- Statistical methods applied 
-- Clustering and classification
-- Performance metrics used: (more information here needed) 
-- Assumptions or limitations considered
+ ##### Data Cleaning & Transformation
+14. We renamed the `"Startup Name"` column to `"Startup ID"` for better indexing.  
+15. We converted startup names into unique numeric IDs using:  
+    ```python
+    df["Startup ID"] = df["Startup ID"].factorize()[0] + 1
+    ```
+16. We rounded all numerical columns to two decimal places using:  
+    ```python
+    df = df.round(2)
+    ```
+17. We saved the cleaned dataset as a new CSV file for further analysis:  
+    ```python
+    df.to_csv("data_files/cleaned_startup_data.csv", index=False)
+    ```
+<br/>
+
+##### 3. Exploratory Data Analysis (EDA)
+
+18. We calculated the average growth rate for each industry by grouping data using:  
+    ```python
+    growth_by_industry = df.groupby("Industry")["Growth Rate (%)"].mean().reset_index()
+    ```  
+19. We identified the industry with the highest growth rate.  
+20. We calculated total investment and valuation by industry:  
+    ```python
+    industry_stats = df.groupby("Industry").agg(
+        Total_Investment=("Investment Amount (USD)", "sum"),
+        Total_Valuation=("Valuation (USD)", "sum")
+    ).reset_index()
+    ```
+21. We determined the industry with the most investment and highest valuation.  
+22. We calculated total investment by country to identify which country invested the most.  
+
+##### Data Segmentation
+23. We segmented industries based on investment size using quantile-based grouping (`qcut`):  
+    ```python
+    industry_stats["Investment_Segment"] = pd.qcut(
+        industry_stats["Total_Investment"], q=3, labels=["Low", "Medium", "High"]
+    )
+    ```
+24. We applied the same segmentation method to valuation data and country statistics:  
+    ```python
+    country_stats["Investment_Segment"] = pd.qcut(
+        country_stats["Total_Investment"], q=3, labels=["Low", "Medium", "High"]
+    )
+    ```
+##### **Saving Data for Future Use**  
+25. We saved the cleaned dataset as a Pickle file for quick access in later analysis:  
+    ```python
+    df.to_pickle("data_files/investment_data.pkl")
+    ```
+26. We reloaded the Pickle file to verify data integrity:  
+    ```python
+    df_loaded = pd.read_pickle("data_files/investment_data.pkl")
+    ```
+##### **Data Visualization**  
+27. We created visual representations of the dataset, including:  
+   - **Industry-wise Investment Segmentation** using bar plots.  
+   - **Country-wise Investment Segmentation** to compare total investments.  
+   - **Industry-wise Valuation Segmentation** to assess total valuation.  
+   - **Country-wise Valuation Segmentation** to understand investment distribution.  
+28. We visualized average growth rates for each industry using bar charts:  
+    ```python
+    industry_growth = df.groupby("Industry")["Growth Rate"].mean().sort_values(ascending=False)
+    sns.barplot(x=industry_growth.values, y=industry_growth.index, palette="coolwarm")
+    ```
+29. We generated pie charts to display total investment and valuation distribution across industries and countries:  
+    ```python
+    plt.pie(industry_totals["Total_Investment"], labels=industry_totals.index, autopct='%1.1f%%')
+    plt.pie(country_totals["Total_Investment"], labels=country_totals.index, autopct='%1.1f%%')
+    ```
+30. We saved all visual outputs as image files in the `data_visuals` directory:  
+    ```python
+    plt.savefig("data_visuals/investment_valuation_segmentation.png", bbox_inches="tight")
+    ```
+
 <br/>
 
 ## Functions
