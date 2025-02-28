@@ -85,7 +85,7 @@ Branches created:
     ```
 <br/>
 
-##### 3. Exploratory Data Analysis (EDA)
+#### 3. Exploratory Data Analysis (EDA)
 
 18. We calculated the average growth rate for each industry by grouping data using:  
     ```python
@@ -124,7 +124,7 @@ Branches created:
     ```python
     df_loaded = pd.read_pickle("data_files/investment_data.pkl")
     ```
-##### **Data Visualization**  
+#### **Data Visualization**  
 27. We created visual representations of the dataset, including:  
    - **Industry-wise Investment Segmentation** using bar plots.  
    - **Country-wise Investment Segmentation** to compare total investments.  
