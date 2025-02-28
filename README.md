@@ -125,11 +125,11 @@ Summary of Findings
 
 - we tried to use a format for the money amounts having it show a M or B (millions and billions) for a better user experience but it didnt work for getting statistics as we needed am integer and not a string 
 - we change the startups generic names into an Id numbers for better searchability
+
+---
 <br/>
 <br/>
 <br/> 
-
----
 
 # Feature: Webscraper 
 
